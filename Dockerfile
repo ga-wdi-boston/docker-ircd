@@ -7,7 +7,6 @@ RUN apt-get install -y ircd-irc2
 RUN rm /usr/sbin/policy-rc.d
 RUN chown -R irc:irc /etc/ircd
 
-#ADD ircd.conf /etc/ircd-hybrid/ircd.conf
 ADD run /usr/local/bin/run
 
 USER irc
