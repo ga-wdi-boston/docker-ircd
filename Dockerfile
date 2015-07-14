@@ -22,4 +22,4 @@ RUN rm /usr/sbin/policy-rc.d
 
 USER irc
 EXPOSE 6667
-CMD service ircd-irc2 start
+ENTRYPOINT ["service ircd-irc2 start"]
