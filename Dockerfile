@@ -1,12 +1,12 @@
 FROM ubuntu:14.04
 MAINTAINER Jeffrey Horn "jeffh@generalassemb.ly"
-RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
-RUN apt-get update
 
 # work around policy
-RUN echo "#!/bin/sh\nexit 101" > /usr/sbin/policy-rc.d; chmod +x /usr/sbin/policy-rc.d
+RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d; chmod +x /usr/sbin/policy-rc.d
 
 # install ircd
+RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
+RUN apt-get update
 RUN apt-get install -y ircd-irc2
 
 # configure ircd
