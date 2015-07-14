@@ -8,12 +8,8 @@ RUN echo "#!/bin/sh\nexit 101" > /usr/sbin/policy-rc.d; chmod +x /usr/sbin/polic
 RUN apt-get update && apt-get install -y ircd-irc2
 
 # configure ircd
-RUN rm -v /etc/ircd/ircd.conf
 ADD ircd.conf /etc/ircd
-
-RUN rm -v /etc/ircd/ircd.motd
 ADD ircd.motd /etc/ircd
-
 RUN chown -R irc:irc /etc/ircd
 
 # cleanup
