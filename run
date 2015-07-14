@@ -1,8 +1,0 @@
-#!/bin/bash
-IRCD_SERVER_NAME=${IRCD_SERVER_NAME:-"ircd.localhost"}
-IRCD_LOCATION=${IRCD_LOCATION:-""}
-
-sed -i -e "s/^M.*/M:$IRCD_SERVER_NAME::$IRCD_LOCATION::000A/" /etc/ircd/ircd.conf
-
-exec ircd -t
-

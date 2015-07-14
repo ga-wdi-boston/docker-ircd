@@ -7,9 +7,7 @@ RUN apt-get install -y ircd-irc2
 RUN rm /usr/sbin/policy-rc.d
 RUN chown -R irc:irc /etc/ircd
 
-ADD run /usr/local/bin/run
 
 USER irc
-CMD ["/usr/local/bin/run"]
-
 EXPOSE 6667
+CMD service ircd-irc2 start
