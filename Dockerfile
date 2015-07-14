@@ -1,10 +1,18 @@
-FROM ubuntu:12.04
-MAINTAINER Ben Firshman "ben@firshman.co.uk"
-RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
+FROM ubuntu:14.04
+MAINTAINER Jeffrey Horn "jeffh@generalassemb.ly"
+RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
 RUN apt-get update
-RUN echo "#!/bin/sh\nexit 101" > /usr/sbin/policy-rc.d; chmod +x /usr/sbin/policy-rc.d
+
+# install ircd
 RUN apt-get install -y ircd-irc2
-RUN rm /usr/sbin/policy-rc.d
+
+# configure ircd
+RUN rm -v /etc/ircd/ircd.conf
+ADD ircd.conf /etc/ircd
+
+RUN rm -v /etc/ircd/ircd.motd
+ADD ircd.motd /etc/ircd
+
 RUN chown -R irc:irc /etc/ircd
 
 
