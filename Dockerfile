@@ -6,8 +6,7 @@ RUN echo "#!/bin/sh\nexit 0" > /usr/sbin/policy-rc.d; chmod +x /usr/sbin/policy-
 
 # install ircd
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
-RUN apt-get update
-RUN apt-get install -y ircd-irc2
+RUN apt-get update && apt-get install -y ircd-irc2
 
 # configure ircd
 RUN rm -v /etc/ircd/ircd.conf
