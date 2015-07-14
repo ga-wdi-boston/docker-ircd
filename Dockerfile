@@ -18,5 +18,4 @@ RUN rm /usr/sbin/policy-rc.d
 USER irc
 EXPOSE 6667
 
-ADD start /usr/local/bin/start
-CMD ["/usr/local/bin/start"]
+CMD ["service ircd-irc2 start"]
