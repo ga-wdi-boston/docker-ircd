@@ -3,6 +3,9 @@ MAINTAINER Jeffrey Horn "jeffh@generalassemb.ly"
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
 RUN apt-get update
 
+# work around policy
+RUN echo "#!/bin/sh\nexit 101" > /usr/sbin/policy-rc.d; chmod +x /usr/sbin/policy-rc.d
+
 # install ircd
 RUN apt-get install -y ircd-irc2
 
@@ -15,6 +18,8 @@ ADD ircd.motd /etc/ircd
 
 RUN chown -R irc:irc /etc/ircd
 
+# cleanup
+RUN rm /usr/sbin/policy-rc.d
 
 USER irc
 EXPOSE 6667
